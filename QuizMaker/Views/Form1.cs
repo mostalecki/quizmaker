@@ -7,60 +7,70 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace QuizMaker
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form, IView
     {
-        Quiz quiz;
+        #region IView
+        public string QuizTitle
+        {
+            get
+            {
+                return textBoxTitle.Text;
+            }
+            set
+            {
+                textBoxTitle.Text = value;
+            }
+        }
+        public string Question
+        {
+            get
+            {
+                return textBoxQuestion.Text;
+            }
+            set
+            {
+                textBoxQuestion.Text = value;
+            }
+        }
+        //TODO: create getters and setters for Answers and IsCorrect
+        public string[] Answers { get; set; }
+        public bool[] IsCorrect { get; set; }
+        public uint Points
+        {
+            get
+            {
+                return (uint)numericUpDownPoints.Value;
+            }
+            set
+            {
+                numericUpDownPoints.Value = (decimal)value;
+            }
+        }
+        public uint TotalPoints
+        {
+            set
+            {
+                textBoxTotalPoints.Text = value.ToString();
+            }
+        }
+
+        #endregion
         public Form1()
         {
             InitializeComponent();
-            quiz = new Quiz();
-            quiz.title = "quizzzz";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            /*Question q = new Question();
-            q.text = textBoxQuestion.Text;
-            q.answers.Add(textBox2.Text);
-            q.answers.Add(textBox3.Text);
-            q.answers.Add(textBox4.Text);
-            q.answers.Add(textBox5.Text);
-
-            q.isCorrect.Add(checkBox1.Checked);
-            q.isCorrect.Add(checkBox2.Checked);
-            q.isCorrect.Add(checkBox3.Checked);
-            q.isCorrect.Add(checkBox4.Checked);
-
-            quiz.questions.Add(q);
-
-            textBoxQuestion.Text = "";
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            checkBox1.Checked = false;
-            checkBox2.Checked = false;
-            checkBox3.Checked = false;
-            checkBox4.Checked = false;*/
-
-            foreach (var x in groupBoxAddQuestion.Controls)
-            {
-                Console.WriteLine(x.ToString());
-            }
 
 
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            string output = JsonConvert.SerializeObject(quiz);
-            //Console.WriteLine(output);
-            var o = JsonConvert.DeserializeObject(output);
-            Console.Write(o.ToString());
         }
 
     }
