@@ -23,8 +23,8 @@ namespace QuizMaker
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Question q = new Question();
-            q.text = textBox1.Text;
+            /*Question q = new Question();
+            q.text = textBoxQuestion.Text;
             q.answers.Add(textBox2.Text);
             q.answers.Add(textBox3.Text);
             q.answers.Add(textBox4.Text);
@@ -37,7 +37,7 @@ namespace QuizMaker
 
             quiz.questions.Add(q);
 
-            textBox1.Text = "";
+            textBoxQuestion.Text = "";
             textBox2.Text = "";
             textBox3.Text = "";
             textBox4.Text = "";
@@ -45,7 +45,12 @@ namespace QuizMaker
             checkBox1.Checked = false;
             checkBox2.Checked = false;
             checkBox3.Checked = false;
-            checkBox4.Checked = false;
+            checkBox4.Checked = false;*/
+
+            foreach (var x in groupBoxAddQuestion.Controls)
+            {
+                Console.WriteLine(x.ToString());
+            }
 
 
         }
@@ -57,5 +62,6 @@ namespace QuizMaker
             var o = JsonConvert.DeserializeObject(output);
             Console.Write(o.ToString());
         }
+
     }
 }
