@@ -73,5 +73,11 @@ namespace QuizMaker
         {
         }
 
+        private void btnAddAnswer_Click(object sender, EventArgs e)
+        {
+            AnswerControl answer = new AnswerControl();
+            flowLayoutAnswers.Controls.Add(answer);
+        }
+
     }
 }
