@@ -35,9 +35,54 @@ namespace QuizMaker
                 textBoxQuestion.Text = value;
             }
         }
-        //TODO: create getters and setters for Answers and IsCorrect
-        public string[] Answers { get; set; }
-        public bool[] IsCorrect { get; set; }
+        public string[] Answers
+        {
+            get
+            {
+                List<string> answers = new List<string>();
+                foreach (AnswerControl c in flowLayoutAnswers.Controls)
+                {
+                    answers.Add(c.Text);
+                }
+                return answers.ToArray();
+            }
+            set
+            {
+                for (int i = flowLayoutAnswers.Controls.Count; i < value.Length; i++)
+                {
+                    AnswerControl answer = new AnswerControl();
+                    flowLayoutAnswers.Controls.Add(answer);
+                }
+                for(int i = 0; i < value.Length; i++)
+                {
+                    flowLayoutAnswers.Controls[i].Text = value[i];
+                }
+            }
+        }
+        public bool[] IsCorrect
+        {
+            get
+            {
+                List<bool> isCorrect = new List<bool>();
+                foreach (AnswerControl c in flowLayoutAnswers.Controls)
+                {
+                    isCorrect.Add(c.IsCorrect);
+                }
+                return isCorrect.ToArray();
+            }
+            set
+            {
+                for(int i = flowLayoutAnswers.Controls.Count ; i < value.Length; i++)
+                {
+                    AnswerControl answer = new AnswerControl();
+                    flowLayoutAnswers.Controls.Add(answer);
+                }
+                for (int i = 0; i < value.Length; i++)
+                {
+                    flowLayoutAnswers.Controls[i].Text = value[i];
+                }
+            }
+        }
         public uint Points
         {
             get
@@ -70,30 +115,34 @@ namespace QuizMaker
 
         private void btnSaveQuiz_Click(object sender, EventArgs e)
         {
-
-
+            if (SaveQuiz != null)
+                SaveQuiz();
         }
 
         private void btnLoadQuiz_Click(object sender, EventArgs e)
         {
+            if (LoadQuiz != null)
+                LoadQuiz();
         }
-
+        private void btnAddQuestion_Click(object sender, EventArgs e)
+        {
+            if (AddQuestion != null)
+                AddQuestion();
+        }
+        private void btnEditQuestion_Click(object sender, EventArgs e)
+        {
+            if (EditQuestion != null)
+                EditQuestion();
+        }
+        private void btnDeleteQuestion_Click(object sender, EventArgs e)
+        {
+            if (DeleteQuestion != null)
+                DeleteQuestion();
+        }
         private void btnAddAnswer_Click(object sender, EventArgs e)
         {
             AnswerControl answer = new AnswerControl();
             flowLayoutAnswers.Controls.Add(answer);
-        }
-        private void btnAddQuestion_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void btnEditQuestion_Click(object sender, EventArgs e)
-        {
-
-        }
-        private void btnDeleteQuestion_Click(object sender, EventArgs e)
-        {
-
         }
 
     }
