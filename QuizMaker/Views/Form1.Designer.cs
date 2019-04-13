@@ -36,10 +36,6 @@
             this.btnEditQuestion = new System.Windows.Forms.Button();
             this.btnAddAnswer = new System.Windows.Forms.Button();
             this.flowLayoutAnswers = new System.Windows.Forms.FlowLayoutPanel();
-            this.answerControl1 = new QuizMaker.AnswerControl();
-            this.answerControl2 = new QuizMaker.AnswerControl();
-            this.answerControl3 = new QuizMaker.AnswerControl();
-            this.answerControl4 = new QuizMaker.AnswerControl();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDownPoints = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
@@ -50,6 +46,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelTotalPoints = new System.Windows.Forms.Label();
             this.textBoxTotalPoints = new System.Windows.Forms.TextBox();
+            this.answerControl1 = new QuizMaker.AnswerControl();
+            this.answerControl2 = new QuizMaker.AnswerControl();
+            this.answerControl3 = new QuizMaker.AnswerControl();
+            this.answerControl4 = new QuizMaker.AnswerControl();
             this.groupBoxAddQuestion.SuspendLayout();
             this.flowLayoutAnswers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPoints)).BeginInit();
@@ -123,9 +123,9 @@
             // 
             // btnAddAnswer
             // 
-            this.btnAddAnswer.Location = new System.Drawing.Point(174, 60);
+            this.btnAddAnswer.Location = new System.Drawing.Point(171, 60);
             this.btnAddAnswer.Name = "btnAddAnswer";
-            this.btnAddAnswer.Size = new System.Drawing.Size(22, 23);
+            this.btnAddAnswer.Size = new System.Drawing.Size(25, 23);
             this.btnAddAnswer.TabIndex = 13;
             this.btnAddAnswer.Text = "+";
             this.btnAddAnswer.UseVisualStyleBackColor = true;
@@ -144,38 +144,6 @@
             this.flowLayoutAnswers.Size = new System.Drawing.Size(218, 150);
             this.flowLayoutAnswers.TabIndex = 14;
             this.flowLayoutAnswers.WrapContents = false;
-            // 
-            // answerControl1
-            // 
-            this.answerControl1.IsCorrect = false;
-            this.answerControl1.Location = new System.Drawing.Point(3, 3);
-            this.answerControl1.Name = "answerControl1";
-            this.answerControl1.Size = new System.Drawing.Size(187, 29);
-            this.answerControl1.TabIndex = 0;
-            // 
-            // answerControl2
-            // 
-            this.answerControl2.IsCorrect = false;
-            this.answerControl2.Location = new System.Drawing.Point(3, 38);
-            this.answerControl2.Name = "answerControl2";
-            this.answerControl2.Size = new System.Drawing.Size(187, 29);
-            this.answerControl2.TabIndex = 1;
-            // 
-            // answerControl3
-            // 
-            this.answerControl3.IsCorrect = false;
-            this.answerControl3.Location = new System.Drawing.Point(3, 73);
-            this.answerControl3.Name = "answerControl3";
-            this.answerControl3.Size = new System.Drawing.Size(187, 29);
-            this.answerControl3.TabIndex = 2;
-            // 
-            // answerControl4
-            // 
-            this.answerControl4.IsCorrect = false;
-            this.answerControl4.Location = new System.Drawing.Point(3, 108);
-            this.answerControl4.Name = "answerControl4";
-            this.answerControl4.Size = new System.Drawing.Size(187, 29);
-            this.answerControl4.TabIndex = 3;
             // 
             // label1
             // 
@@ -261,6 +229,38 @@
             this.textBoxTotalPoints.ReadOnly = true;
             this.textBoxTotalPoints.Size = new System.Drawing.Size(100, 20);
             this.textBoxTotalPoints.TabIndex = 18;
+            // 
+            // answerControl1
+            // 
+            this.answerControl1.IsCorrect = false;
+            this.answerControl1.Location = new System.Drawing.Point(3, 3);
+            this.answerControl1.Name = "answerControl1";
+            this.answerControl1.Size = new System.Drawing.Size(187, 29);
+            this.answerControl1.TabIndex = 0;
+            // 
+            // answerControl2
+            // 
+            this.answerControl2.IsCorrect = false;
+            this.answerControl2.Location = new System.Drawing.Point(3, 38);
+            this.answerControl2.Name = "answerControl2";
+            this.answerControl2.Size = new System.Drawing.Size(187, 29);
+            this.answerControl2.TabIndex = 1;
+            // 
+            // answerControl3
+            // 
+            this.answerControl3.IsCorrect = false;
+            this.answerControl3.Location = new System.Drawing.Point(3, 73);
+            this.answerControl3.Name = "answerControl3";
+            this.answerControl3.Size = new System.Drawing.Size(187, 29);
+            this.answerControl3.TabIndex = 2;
+            // 
+            // answerControl4
+            // 
+            this.answerControl4.IsCorrect = false;
+            this.answerControl4.Location = new System.Drawing.Point(3, 108);
+            this.answerControl4.Name = "answerControl4";
+            this.answerControl4.Size = new System.Drawing.Size(187, 29);
+            this.answerControl4.TabIndex = 3;
             // 
             // Form1
             // 

@@ -55,7 +55,6 @@ namespace QuizMaker
         }
         public string[] Answers
         {
-            //TODO: make getter omit empty entries
             get
             {
                 List<string> answers = new List<string>();
@@ -85,7 +84,6 @@ namespace QuizMaker
         }
         public bool[] IsCorrect
         {
-            //TODO: make getter omit entries where Text is empty
             get
             {
                 List<bool> isCorrect = new List<bool>();
@@ -138,9 +136,24 @@ namespace QuizMaker
         public event Action LoadQuiz;
 
         #endregion
+        int SelectedNodeIndex
+        {
+            get
+            {
+                try
+                {
+                    return treeView1.SelectedNode.Index;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+        }
         public Form1()
         {
             InitializeComponent();
+            textBoxTotalPoints.Text = "0";
         }
 
         private void btnSaveQuiz_Click(object sender, EventArgs e)
@@ -161,31 +174,13 @@ namespace QuizMaker
         }
         private void btnEditQuestion_Click(object sender, EventArgs e)
         { 
-            int index;
-            try
-            {
-                index = treeView1.SelectedNode.Index;
-            }
-            catch(Exception)
-            {
-                index = -1;
-            }
             if (EditQuestion != null)
-                EditQuestion(index);
+                EditQuestion(SelectedNodeIndex);
         }
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {
-            int index;
-            try
-            {
-                index = treeView1.SelectedNode.Index;
-            }
-            catch (Exception)
-            {
-                index = -1;
-            }
             if (DeleteQuestion != null)
-                DeleteQuestion(index);
+                DeleteQuestion(SelectedNodeIndex);
         }
         private void btnAddAnswer_Click(object sender, EventArgs e)
         {
