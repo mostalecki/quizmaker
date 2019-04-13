@@ -61,7 +61,10 @@ namespace QuizMaker
                 List<string> answers = new List<string>();
                 foreach (AnswerControl c in flowLayoutAnswers.Controls)
                 {
-                    answers.Add(c.Text);
+                    if (c.Text != "")
+                    {
+                        answers.Add(c.Text);
+                    }
                 }
                 return answers.ToArray();
             }
@@ -88,7 +91,10 @@ namespace QuizMaker
                 List<bool> isCorrect = new List<bool>();
                 foreach (AnswerControl c in flowLayoutAnswers.Controls)
                 {
-                    isCorrect.Add(c.IsCorrect);
+                    if (c.Text != "")
+                    {
+                        isCorrect.Add(c.IsCorrect);
+                    }
                 }
                 return isCorrect.ToArray();
             }
