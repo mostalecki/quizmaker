@@ -10,6 +10,7 @@ namespace QuizMaker
     {
         string QuizTitle { get; set; }
         string Question { get; set; }
+        Question[] Questions { set; }
         string[] Answers { get; set; }
         bool[] IsCorrect { get; set; }
         uint Points { get; set; }

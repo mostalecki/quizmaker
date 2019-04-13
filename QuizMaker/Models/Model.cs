@@ -9,6 +9,13 @@ namespace QuizMaker
     class Model
     {
         private Quiz quiz;
+        public Question[] GetQuestions
+        {
+            get
+            {
+                return quiz.questions.ToArray();
+            }
+        }
         public Model() {
             quiz = new Quiz();
         }

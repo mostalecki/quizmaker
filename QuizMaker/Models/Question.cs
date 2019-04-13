@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace QuizMaker
 {
-    class Question
+    public class Question
     {
         public string text;
         //public List<string> answers;

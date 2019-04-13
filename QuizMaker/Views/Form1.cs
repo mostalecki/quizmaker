@@ -35,6 +35,24 @@ namespace QuizMaker
                 textBoxQuestion.Text = value;
             }
         }
+        public Question[] Questions
+        {
+            set
+            {
+                int index = 0;
+                treeView1.Nodes.Clear();
+                foreach(Question q in value)
+                {
+                    Console.WriteLine("siema");
+                    treeView1.Nodes.Add($"{index+1}. {q.text} - {q.points}pts");
+                    for(int j = 0; j < q.answers.Length; j++)
+                    {
+                        treeView1.Nodes[index].Nodes.Add($"{q.answers[j]} - {q.isCorrect[j]}");
+                    }
+                    index += 1;
+                }
+            }
+        }
         public string[] Answers
         {
             //TODO: make getter omit empty entries
@@ -136,14 +154,32 @@ namespace QuizMaker
                 AddQuestion();
         }
         private void btnEditQuestion_Click(object sender, EventArgs e)
-        {
+        { 
+            int index;
+            try
+            {
+                index = treeView1.SelectedNode.Index;
+            }
+            catch(Exception)
+            {
+                index = -1;
+            }
             if (EditQuestion != null)
-                EditQuestion(treeView1.SelectedImageIndex);
+                EditQuestion(index);
         }
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {
+            int index;
+            try
+            {
+                index = treeView1.SelectedNode.Index;
+            }
+            catch (Exception)
+            {
+                index = -1;
+            }
             if (DeleteQuestion != null)
-                DeleteQuestion(treeView1.SelectedImageIndex);
+                DeleteQuestion(index);
         }
         private void btnAddAnswer_Click(object sender, EventArgs e)
         {

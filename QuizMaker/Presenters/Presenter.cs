@@ -23,14 +23,17 @@ namespace QuizMaker
         private void AddQuestion()
         {
             model.AddQuestion(view.Question, view.Answers, view.IsCorrect, view.Points);
+            view.Questions = model.GetQuestions;
         }
         private void EditQuestion(int index)
         {
             model.EditQuestion(index);
+            view.Questions = model.GetQuestions;
         }
         private void DeleteQuestion(int index)
         {
             model.DeleteQuestion(index);
+            view.Questions = model.GetQuestions;
         }
         //method used to debug
         private void PrintQuestions()
