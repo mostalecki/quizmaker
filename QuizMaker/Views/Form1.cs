@@ -37,6 +37,7 @@ namespace QuizMaker
         }
         public string[] Answers
         {
+            //TODO: make getter omit empty entries
             get
             {
                 List<string> answers = new List<string>();
@@ -48,6 +49,7 @@ namespace QuizMaker
             }
             set
             {
+                AnswerControl handle;
                 for (int i = flowLayoutAnswers.Controls.Count; i < value.Length; i++)
                 {
                     AnswerControl answer = new AnswerControl();
@@ -55,12 +57,14 @@ namespace QuizMaker
                 }
                 for(int i = 0; i < value.Length; i++)
                 {
-                    flowLayoutAnswers.Controls[i].Text = value[i];
+                    handle = (AnswerControl)flowLayoutAnswers.Controls[i];
+                    handle.Text = value[i];
                 }
             }
         }
         public bool[] IsCorrect
         {
+            //TODO: make getter omit entries where Text is empty
             get
             {
                 List<bool> isCorrect = new List<bool>();
@@ -72,6 +76,7 @@ namespace QuizMaker
             }
             set
             {
+                AnswerControl handle;
                 for(int i = flowLayoutAnswers.Controls.Count ; i < value.Length; i++)
                 {
                     AnswerControl answer = new AnswerControl();
@@ -79,7 +84,8 @@ namespace QuizMaker
                 }
                 for (int i = 0; i < value.Length; i++)
                 {
-                    flowLayoutAnswers.Controls[i].Text = value[i];
+                    handle = (AnswerControl)flowLayoutAnswers.Controls[i];
+                    handle.IsCorrect = value[i];
                 }
             }
         }
@@ -102,8 +108,8 @@ namespace QuizMaker
             }
         }
         public event Action AddQuestion;
-        public event Action EditQuestion;
-        public event Action DeleteQuestion;
+        public event Action<int> EditQuestion;
+        public event Action<int> DeleteQuestion;
         public event Action SaveQuiz;
         public event Action LoadQuiz;
 
@@ -132,12 +138,12 @@ namespace QuizMaker
         private void btnEditQuestion_Click(object sender, EventArgs e)
         {
             if (EditQuestion != null)
-                EditQuestion();
+                EditQuestion(treeView1.SelectedImageIndex);
         }
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {
             if (DeleteQuestion != null)
-                DeleteQuestion();
+                DeleteQuestion(treeView1.SelectedImageIndex);
         }
         private void btnAddAnswer_Click(object sender, EventArgs e)
         {

@@ -15,8 +15,8 @@ namespace QuizMaker
         uint Points { get; set; }
         uint TotalPoints { set; }
         event Action AddQuestion;
-        event Action EditQuestion;
-        event Action DeleteQuestion;
+        event Action<int> EditQuestion;
+        event Action<int> DeleteQuestion;
         event Action SaveQuiz;
         event Action LoadQuiz;
 

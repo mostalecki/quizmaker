@@ -8,15 +8,23 @@ namespace QuizMaker
 {
     class Question
     {
-        private string text;
-        private List<string> answers;
-        private List<bool> isCorrect;
-        private uint points;
+        public string text;
+        //public List<string> answers;
+        //public List<bool> isCorrect;
+        public string[] answers;
+        public bool[] isCorrect;
+        public uint points;
 
-        public Question()
+        public Question(string text, string[] answers, bool[] isCorrect, uint points)
         {
-            answers = new List<string>();
-            isCorrect = new List<bool>();
+            this.text = text;
+            this.answers = answers;
+            this.isCorrect = isCorrect;
+            this.points = points;
+        }
+        public override string ToString()
+        {
+            return $"{text} {points}";
         }
     }
 }
