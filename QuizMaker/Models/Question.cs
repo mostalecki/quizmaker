@@ -8,10 +8,10 @@ namespace QuizMaker
 {
     class Question
     {
-        public string text;
-        public List<string> answers;
-        public List<bool> isCorrect;
-        public uint points;
+        private string text;
+        private List<string> answers;
+        private List<bool> isCorrect;
+        private uint points;
 
         public Question()
         {

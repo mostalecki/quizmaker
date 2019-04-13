@@ -8,9 +8,9 @@ namespace QuizMaker
 {
     class Quiz
     {
-        public string title;
-        public List<Question> questions;
-        public uint totalPoints;
+        private string title;
+        private List<Question> questions;
+        private uint totalPoints;
 
         public Quiz()
         {
