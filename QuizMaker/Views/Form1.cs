@@ -56,6 +56,11 @@ namespace QuizMaker
                 textBoxTotalPoints.Text = value.ToString();
             }
         }
+        public event Action AddQuestion;
+        public event Action EditQuestion;
+        public event Action DeleteQuestion;
+        public event Action SaveQuiz;
+        public event Action LoadQuiz;
 
         #endregion
         public Form1()
@@ -63,13 +68,13 @@ namespace QuizMaker
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btnSaveQuiz_Click(object sender, EventArgs e)
         {
 
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void btnLoadQuiz_Click(object sender, EventArgs e)
         {
         }
 
@@ -77,6 +82,18 @@ namespace QuizMaker
         {
             AnswerControl answer = new AnswerControl();
             flowLayoutAnswers.Controls.Add(answer);
+        }
+        private void btnAddQuestion_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnEditQuestion_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void btnDeleteQuestion_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

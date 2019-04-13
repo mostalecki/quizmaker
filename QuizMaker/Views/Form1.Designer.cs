@@ -30,24 +30,26 @@
         {
             this.btnAddQuestion = new System.Windows.Forms.Button();
             this.textBoxQuestion = new System.Windows.Forms.TextBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnSaveQuiz = new System.Windows.Forms.Button();
             this.groupBoxAddQuestion = new System.Windows.Forms.GroupBox();
+            this.btnDeleteQuestion = new System.Windows.Forms.Button();
+            this.btnEditQuestion = new System.Windows.Forms.Button();
             this.btnAddAnswer = new System.Windows.Forms.Button();
             this.flowLayoutAnswers = new System.Windows.Forms.FlowLayoutPanel();
+            this.answerControl1 = new QuizMaker.AnswerControl();
+            this.answerControl2 = new QuizMaker.AnswerControl();
+            this.answerControl3 = new QuizMaker.AnswerControl();
+            this.answerControl4 = new QuizMaker.AnswerControl();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDownPoints = new System.Windows.Forms.NumericUpDown();
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxTitle = new System.Windows.Forms.TextBox();
             this.labelTitle = new System.Windows.Forms.Label();
-            this.btnLoad = new System.Windows.Forms.Button();
+            this.btnLoadQuiz = new System.Windows.Forms.Button();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labelTotalPoints = new System.Windows.Forms.Label();
             this.textBoxTotalPoints = new System.Windows.Forms.TextBox();
-            this.answerControl1 = new QuizMaker.AnswerControl();
-            this.answerControl2 = new QuizMaker.AnswerControl();
-            this.answerControl3 = new QuizMaker.AnswerControl();
-            this.answerControl4 = new QuizMaker.AnswerControl();
             this.groupBoxAddQuestion.SuspendLayout();
             this.flowLayoutAnswers.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownPoints)).BeginInit();
@@ -56,13 +58,13 @@
             // 
             // btnAddQuestion
             // 
-            this.btnAddQuestion.Location = new System.Drawing.Point(149, 258);
+            this.btnAddQuestion.Location = new System.Drawing.Point(9, 274);
             this.btnAddQuestion.Name = "btnAddQuestion";
-            this.btnAddQuestion.Size = new System.Drawing.Size(75, 44);
+            this.btnAddQuestion.Size = new System.Drawing.Size(41, 28);
             this.btnAddQuestion.TabIndex = 0;
             this.btnAddQuestion.Text = "Add";
             this.btnAddQuestion.UseVisualStyleBackColor = true;
-            this.btnAddQuestion.Click += new System.EventHandler(this.button1_Click);
+            this.btnAddQuestion.Click += new System.EventHandler(this.btnAddQuestion_Click);
             // 
             // textBoxQuestion
             // 
@@ -71,18 +73,20 @@
             this.textBoxQuestion.Size = new System.Drawing.Size(194, 20);
             this.textBoxQuestion.TabIndex = 1;
             // 
-            // btnSave
+            // btnSaveQuiz
             // 
-            this.btnSave.Location = new System.Drawing.Point(38, 356);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "Save quiz";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.button2_Click);
+            this.btnSaveQuiz.Location = new System.Drawing.Point(38, 356);
+            this.btnSaveQuiz.Name = "btnSaveQuiz";
+            this.btnSaveQuiz.Size = new System.Drawing.Size(75, 23);
+            this.btnSaveQuiz.TabIndex = 10;
+            this.btnSaveQuiz.Text = "Save quiz";
+            this.btnSaveQuiz.UseVisualStyleBackColor = true;
+            this.btnSaveQuiz.Click += new System.EventHandler(this.btnSaveQuiz_Click);
             // 
             // groupBoxAddQuestion
             // 
+            this.groupBoxAddQuestion.Controls.Add(this.btnDeleteQuestion);
+            this.groupBoxAddQuestion.Controls.Add(this.btnEditQuestion);
             this.groupBoxAddQuestion.Controls.Add(this.btnAddAnswer);
             this.groupBoxAddQuestion.Controls.Add(this.flowLayoutAnswers);
             this.groupBoxAddQuestion.Controls.Add(this.label1);
@@ -96,6 +100,26 @@
             this.groupBoxAddQuestion.TabIndex = 11;
             this.groupBoxAddQuestion.TabStop = false;
             this.groupBoxAddQuestion.Text = "Add question";
+            // 
+            // btnDeleteQuestion
+            // 
+            this.btnDeleteQuestion.Location = new System.Drawing.Point(103, 274);
+            this.btnDeleteQuestion.Name = "btnDeleteQuestion";
+            this.btnDeleteQuestion.Size = new System.Drawing.Size(49, 28);
+            this.btnDeleteQuestion.TabIndex = 20;
+            this.btnDeleteQuestion.Text = "Delete";
+            this.btnDeleteQuestion.UseVisualStyleBackColor = true;
+            this.btnDeleteQuestion.Click += new System.EventHandler(this.btnDeleteQuestion_Click);
+            // 
+            // btnEditQuestion
+            // 
+            this.btnEditQuestion.Location = new System.Drawing.Point(56, 274);
+            this.btnEditQuestion.Name = "btnEditQuestion";
+            this.btnEditQuestion.Size = new System.Drawing.Size(41, 28);
+            this.btnEditQuestion.TabIndex = 19;
+            this.btnEditQuestion.Text = "Edit";
+            this.btnEditQuestion.UseVisualStyleBackColor = true;
+            this.btnEditQuestion.Click += new System.EventHandler(this.btnEditQuestion_Click);
             // 
             // btnAddAnswer
             // 
@@ -120,6 +144,38 @@
             this.flowLayoutAnswers.Size = new System.Drawing.Size(218, 150);
             this.flowLayoutAnswers.TabIndex = 14;
             this.flowLayoutAnswers.WrapContents = false;
+            // 
+            // answerControl1
+            // 
+            this.answerControl1.IsCorrect = false;
+            this.answerControl1.Location = new System.Drawing.Point(3, 3);
+            this.answerControl1.Name = "answerControl1";
+            this.answerControl1.Size = new System.Drawing.Size(187, 29);
+            this.answerControl1.TabIndex = 0;
+            // 
+            // answerControl2
+            // 
+            this.answerControl2.IsCorrect = false;
+            this.answerControl2.Location = new System.Drawing.Point(3, 38);
+            this.answerControl2.Name = "answerControl2";
+            this.answerControl2.Size = new System.Drawing.Size(187, 29);
+            this.answerControl2.TabIndex = 1;
+            // 
+            // answerControl3
+            // 
+            this.answerControl3.IsCorrect = false;
+            this.answerControl3.Location = new System.Drawing.Point(3, 73);
+            this.answerControl3.Name = "answerControl3";
+            this.answerControl3.Size = new System.Drawing.Size(187, 29);
+            this.answerControl3.TabIndex = 2;
+            // 
+            // answerControl4
+            // 
+            this.answerControl4.IsCorrect = false;
+            this.answerControl4.Location = new System.Drawing.Point(3, 108);
+            this.answerControl4.Name = "answerControl4";
+            this.answerControl4.Size = new System.Drawing.Size(187, 29);
+            this.answerControl4.TabIndex = 3;
             // 
             // label1
             // 
@@ -162,15 +218,15 @@
             this.labelTitle.TabIndex = 13;
             this.labelTitle.Text = "Quiz title:";
             // 
-            // btnLoad
+            // btnLoadQuiz
             // 
-            this.btnLoad.Location = new System.Drawing.Point(119, 356);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
-            this.btnLoad.TabIndex = 14;
-            this.btnLoad.Text = "Load quiz";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.button1_Click);
+            this.btnLoadQuiz.Location = new System.Drawing.Point(119, 356);
+            this.btnLoadQuiz.Name = "btnLoadQuiz";
+            this.btnLoadQuiz.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadQuiz.TabIndex = 14;
+            this.btnLoadQuiz.Text = "Load quiz";
+            this.btnLoadQuiz.UseVisualStyleBackColor = true;
+            this.btnLoadQuiz.Click += new System.EventHandler(this.btnLoadQuiz_Click);
             // 
             // treeView1
             // 
@@ -206,38 +262,6 @@
             this.textBoxTotalPoints.Size = new System.Drawing.Size(100, 20);
             this.textBoxTotalPoints.TabIndex = 18;
             // 
-            // answerControl1
-            // 
-            this.answerControl1.IsCorrect = false;
-            this.answerControl1.Location = new System.Drawing.Point(3, 3);
-            this.answerControl1.Name = "answerControl1";
-            this.answerControl1.Size = new System.Drawing.Size(187, 29);
-            this.answerControl1.TabIndex = 0;
-            // 
-            // answerControl2
-            // 
-            this.answerControl2.IsCorrect = false;
-            this.answerControl2.Location = new System.Drawing.Point(3, 38);
-            this.answerControl2.Name = "answerControl2";
-            this.answerControl2.Size = new System.Drawing.Size(187, 29);
-            this.answerControl2.TabIndex = 1;
-            // 
-            // answerControl3
-            // 
-            this.answerControl3.IsCorrect = false;
-            this.answerControl3.Location = new System.Drawing.Point(3, 73);
-            this.answerControl3.Name = "answerControl3";
-            this.answerControl3.Size = new System.Drawing.Size(187, 29);
-            this.answerControl3.TabIndex = 2;
-            // 
-            // answerControl4
-            // 
-            this.answerControl4.IsCorrect = false;
-            this.answerControl4.Location = new System.Drawing.Point(3, 108);
-            this.answerControl4.Name = "answerControl4";
-            this.answerControl4.Size = new System.Drawing.Size(187, 29);
-            this.answerControl4.TabIndex = 3;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,11 +271,11 @@
             this.Controls.Add(this.textBoxTotalPoints);
             this.Controls.Add(this.labelTotalPoints);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnLoad);
+            this.Controls.Add(this.btnLoadQuiz);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.textBoxTitle);
             this.Controls.Add(this.groupBoxAddQuestion);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnSaveQuiz);
             this.Name = "Form1";
             this.Text = "QuizMaker";
             this.groupBoxAddQuestion.ResumeLayout(false);
@@ -268,12 +292,12 @@
 
         private System.Windows.Forms.Button btnAddQuestion;
         private System.Windows.Forms.TextBox textBoxQuestion;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnSaveQuiz;
         private System.Windows.Forms.GroupBox groupBoxAddQuestion;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxTitle;
         private System.Windows.Forms.Label labelTitle;
-        private System.Windows.Forms.Button btnLoad;
+        private System.Windows.Forms.Button btnLoadQuiz;
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label labelTotalPoints;
@@ -286,6 +310,8 @@
         private AnswerControl answerControl2;
         private AnswerControl answerControl3;
         private AnswerControl answerControl4;
+        private System.Windows.Forms.Button btnDeleteQuestion;
+        private System.Windows.Forms.Button btnEditQuestion;
     }
 }
 

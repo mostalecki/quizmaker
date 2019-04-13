@@ -14,6 +14,11 @@ namespace QuizMaker
         bool[] IsCorrect { get; set; }
         uint Points { get; set; }
         uint TotalPoints { set; }
+        event Action AddQuestion;
+        event Action EditQuestion;
+        event Action DeleteQuestion;
+        event Action SaveQuiz;
+        event Action LoadQuiz;
 
 
     }
