@@ -21,7 +21,14 @@ namespace QuizMaker
         }
         public void AddQuestion(string text, string[] answers, bool[] isCorrect, uint points)
         {
-            quiz.questions.Add(new Question(text, answers, isCorrect, points));
+            if (answers.Length < 2)
+            {
+                throw new Exception("Add at least 2 answers.");
+            }
+            else
+            {
+                quiz.questions.Add(new Question(text, answers, isCorrect, points));
+            }
         }
         public void EditQuestion(int index)
         {

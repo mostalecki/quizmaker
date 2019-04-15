@@ -43,7 +43,6 @@ namespace QuizMaker
                 treeView1.Nodes.Clear();
                 foreach(Question q in value)
                 {
-                    Console.WriteLine("siema");
                     treeView1.Nodes.Add($"{index+1}. {q.text} - {q.points}pts");
                     for(int j = 0; j < q.answers.Length; j++)
                     {
@@ -140,6 +139,13 @@ namespace QuizMaker
         }
 
         #endregion
+        #region Constructor
+        public Form1()
+        {
+            InitializeComponent();
+            textBoxTotalPoints.Text = "0";
+        }
+        #endregion
         int SelectedNodeIndex
         {
             get
@@ -154,12 +160,12 @@ namespace QuizMaker
                 }
             }
         }
-        public Form1()
+        private void btnAddAnswer_Click(object sender, EventArgs e)
         {
-            InitializeComponent();
-            textBoxTotalPoints.Text = "0";
+            AnswerControl answer = new AnswerControl();
+            flowLayoutAnswers.Controls.Add(answer);
         }
-
+        #region EventMethods
         private void btnSaveQuiz_Click(object sender, EventArgs e)
         {
             if (SaveQuiz != null)
@@ -186,11 +192,6 @@ namespace QuizMaker
             if (DeleteQuestion != null)
                 DeleteQuestion(SelectedNodeIndex);
         }
-        private void btnAddAnswer_Click(object sender, EventArgs e)
-        {
-            AnswerControl answer = new AnswerControl();
-            flowLayoutAnswers.Controls.Add(answer);
-        }
-
+        #endregion
     }
 }

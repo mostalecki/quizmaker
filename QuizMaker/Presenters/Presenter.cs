@@ -22,7 +22,14 @@ namespace QuizMaker
         }
         private void AddQuestion()
         {
-            model.AddQuestion(view.Question, view.Answers, view.IsCorrect, view.Points);
+            try
+            {
+                model.AddQuestion(view.Question, view.Answers, view.IsCorrect, view.Points);
+            }
+            catch(Exception e)
+            {
+                view.ShowMessage(e.Message);
+            }
             view.Questions = model.GetQuestions;
         }
         private void EditQuestion(int index)
