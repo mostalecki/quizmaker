@@ -26,5 +26,9 @@ namespace QuizMaker
         {
             return $"{text} {points}";
         }
+        public Tuple<string, uint, string[], bool[]> GetTuple()
+        {
+            return new Tuple<string, uint, string[], bool[]>(text, points, answers, isCorrect);
+        }
     }
 }

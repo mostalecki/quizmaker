@@ -9,19 +9,26 @@ namespace QuizMaker
     class Model
     {
         private Quiz quiz;
-        public Question[] GetQuestions
+        public Model()
+        {
+            quiz = new Quiz();
+        }
+
+
+        public List<Tuple<string, uint, string[], bool[]>> GetQuestions
         {
             get
             {
-                return quiz.questions.ToArray();
+                return quiz.GetQuestionTuples();
             }
-        }
-        public Model() {
-            quiz = new Quiz();
         }
         public void AddQuestion(string text, string[] answers, bool[] isCorrect, uint points)
         {
-            if (answers.Length < 2)
+            if(text == "")
+            {
+                throw new Exception("Question text cannot be blank.");
+            }
+            else if (answers.Length < 2)
             {
                 throw new Exception("Add at least 2 answers.");
             }

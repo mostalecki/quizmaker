@@ -10,7 +10,7 @@ namespace QuizMaker
     {
         string QuizTitle { get; set; }
         string Question { get; set; }
-        Question[] Questions { set; }
+        List<Tuple<string, uint, string[], bool[]>> Questions { set; }
         string[] Answers { get; set; }
         bool[] IsCorrect { get; set; }
         uint Points { get; set; }

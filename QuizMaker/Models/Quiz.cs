@@ -16,5 +16,9 @@ namespace QuizMaker
         {
             questions = new List<Question>();
         }
+        public List<Tuple<string, uint, string[], bool[]>> GetQuestionTuples()
+        {
+            return (from n in Enumerable.Range(0, questions.Count) select questions[n].GetTuple()).ToList();
+        }
     }
 }
