@@ -20,6 +20,7 @@ namespace QuizMaker
         event Action<int> DeleteQuestion;
         event Action SaveQuiz;
         event Action LoadQuiz;
+        void ShowMessage(string messageText);
 
 
     }

@@ -134,6 +134,10 @@ namespace QuizMaker
         public event Action<int> DeleteQuestion;
         public event Action SaveQuiz;
         public event Action LoadQuiz;
+        public void ShowMessage(string messageText)
+        {
+            MessageBox.Show(messageText);
+        }
 
         #endregion
         int SelectedNodeIndex

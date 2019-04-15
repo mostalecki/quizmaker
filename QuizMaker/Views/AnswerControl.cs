@@ -12,7 +12,7 @@ namespace QuizMaker
 {
     public partial class AnswerControl : UserControl
     {
-        public string Text
+        public override string Text
         {
             get
             {
