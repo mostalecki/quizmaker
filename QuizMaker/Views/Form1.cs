@@ -43,7 +43,7 @@ namespace QuizMaker
                 treeView1.Nodes.Clear();
                 foreach(var questionTuple in value)
                 {
-                    treeView1.Nodes.Add($"{index}. {questionTuple.Item1} - {questionTuple.Item2}pts");
+                    treeView1.Nodes.Add($"{index+1}. {questionTuple.Item1} - {questionTuple.Item2}pts");
                     for(int i = 0; i < questionTuple.Item3.Length; i++)
                     {
                         treeView1.Nodes[index].Nodes.Add($"{questionTuple.Item3[i]} - {questionTuple.Item4[i]}");
