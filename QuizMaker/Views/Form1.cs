@@ -137,6 +137,17 @@ namespace QuizMaker
         {
             MessageBox.Show(messageText);
         }
+        public void ClearEntries()
+        {
+            Question = "";
+            flowLayoutAnswers.Controls.Clear();
+            for (int i = 0; i < 4; i++)
+            {
+                AnswerControl answer = new AnswerControl();
+                flowLayoutAnswers.Controls.Add(answer);
+            }
+
+        }
 
         #endregion
         #region Constructor
@@ -165,6 +176,21 @@ namespace QuizMaker
             AnswerControl answer = new AnswerControl();
             flowLayoutAnswers.Controls.Add(answer);
         }
+        private bool validateQuestion()
+        {
+            if(Question == "")
+            {
+                MessageBox.Show("Question text cannot be blank.");
+                return false;
+            }
+            else if(Answers.Length < 2)
+            {
+                MessageBox.Show("Add at least 2 answers.");
+                return false;
+            }
+            return true;
+
+        }
         #region EventMethods
         private void btnSaveQuiz_Click(object sender, EventArgs e)
         {
@@ -179,13 +205,19 @@ namespace QuizMaker
         }
         private void btnAddQuestion_Click(object sender, EventArgs e)
         {
-            if (AddQuestion != null)
-                AddQuestion();
+            if (validateQuestion())
+            {
+                if (AddQuestion != null)
+                    AddQuestion();
+            }
         }
         private void btnEditQuestion_Click(object sender, EventArgs e)
-        { 
-            if (EditQuestion != null)
-                EditQuestion(SelectedNodeIndex);
+        {
+            if (validateQuestion())
+            {
+                if (EditQuestion != null)
+                    EditQuestion(SelectedNodeIndex);
+            }
         }
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {

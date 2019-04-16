@@ -21,6 +21,7 @@ namespace QuizMaker
         event Action SaveQuiz;
         event Action LoadQuiz;
         void ShowMessage(string messageText);
+        void ClearEntries();
 
 
     }

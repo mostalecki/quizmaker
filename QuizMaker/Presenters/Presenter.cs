@@ -30,16 +30,19 @@ namespace QuizMaker
             {
                 view.ShowMessage(e.Message);
             }
+            view.ClearEntries();
             view.Questions = model.GetQuestions;
         }
         private void EditQuestion(int index)
         {
             model.EditQuestion(index, view.Question, view.Answers, view.IsCorrect, view.Points);
+            view.ClearEntries();
             view.Questions = model.GetQuestions;
         }
         private void DeleteQuestion(int index)
         {
             model.DeleteQuestion(index);
+            view.ClearEntries();
             view.Questions = model.GetQuestions;
         }
         //method used to debug
