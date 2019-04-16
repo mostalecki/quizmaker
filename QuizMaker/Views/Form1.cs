@@ -50,7 +50,7 @@ namespace QuizMaker
                     }
                     index += 1;
                 }
-                //treeView1.Nodes.Add("+ - New question");
+                treeView1.Nodes.Add("+ New question");
             }
         }
         public string[] Answers
@@ -215,6 +215,10 @@ namespace QuizMaker
         }
         private void btnEditQuestion_Click(object sender, EventArgs e)
         {
+            if (SelectedNodeIndex + 1 == treeView1.Nodes.Count)
+            {
+                return;
+            }
             if (validateQuestion())
             {
                 if (EditQuestion != null)
@@ -223,6 +227,10 @@ namespace QuizMaker
         }
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {
+            if (SelectedNodeIndex + 1 == treeView1.Nodes.Count)
+            {
+                return;
+            }
             if (DeleteQuestion != null)
                 DeleteQuestion(SelectedNodeIndex);
         }
@@ -237,12 +245,19 @@ namespace QuizMaker
                 }
                 e.Node.BackColor = SystemColors.MenuHighlight;
                 e.Node.ForeColor = Color.White;
+
+                if (e.Node.Index + 1 == treeView1.Nodes.Count)
+                {
+                    ClearEntries();
+                    return;
+                }
+
                 if (SelectQuestion != null)
                     SelectQuestion(e.Node.Index);
             }
             else
             {
-
+                //todo: if sender is a chld node, unselect
             }
         }
         #endregion
