@@ -20,6 +20,7 @@ namespace QuizMaker
             this.view.DeleteQuestion += DeleteQuestion;
             this.view.SelectQuestion += SelectQuestion;
             this.view.SaveQuiz += SaveQuiz;
+            this.view.LoadQuiz += LoadQuiz;
         }
         private void AddQuestion()
         {
@@ -48,6 +49,17 @@ namespace QuizMaker
         {
             model.QuizTitle = view.QuizTitle;
             model.SaveQuiz(path);
+        }
+        private void LoadQuiz(string path)
+        {
+            try
+            {
+                model.LoadQuiz(path);
+            }
+            catch(Exception e)
+            {
+                view.ShowMessage(e.Message);
+            }
         }
         private void ReloadView()
         {

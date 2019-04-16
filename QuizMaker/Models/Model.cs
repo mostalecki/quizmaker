@@ -73,5 +73,21 @@ namespace QuizMaker
                 outputFile.Write(outputJson);
             }
         }
+        public void LoadQuiz(string path)
+        {
+            string inputJson;
+            using (StreamReader inputFile = new StreamReader(Path.Combine(path)))
+            {
+                inputJson = inputFile.ReadToEnd();
+            }
+            try
+            {
+                quiz  = (Quiz)JsonConvert.DeserializeObject(inputJson);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Failed to open file");
+            }
+        }
     }
 }

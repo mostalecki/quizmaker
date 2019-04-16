@@ -198,21 +198,31 @@ namespace QuizMaker
         #region EventMethods
         private void btnSaveQuiz_Click(object sender, EventArgs e)
         {
-            SaveFileDialog quizFile = new SaveFileDialog();
-            quizFile.DefaultExt = "json";
-            quizFile.FileName = "unnamed_quiz.json";
-            quizFile.Filter = "JSON files (*.json)|*.json|Text files (*.txt)|*.txt";
-            if (quizFile.ShowDialog() == DialogResult.OK)
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
             {
-                if (SaveQuiz != null)
-                    SaveQuiz(quizFile.FileName);
+                saveFileDialog.DefaultExt = "json";
+                saveFileDialog.FileName = "unnamed_quiz.json";
+                saveFileDialog.Filter = "JSON files (*.json)|*.json|Text files (*.txt)|*.txt";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (SaveQuiz != null)
+                        SaveQuiz(saveFileDialog.FileName);
+                }
             }
         }
 
         private void btnLoadQuiz_Click(object sender, EventArgs e)
         {
-            if (LoadQuiz != null)
-                LoadQuiz("xd");
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
+                openFileDialog.Filter = "JSON files (*.json)|*.json|Txt files (*.txt)|*.txt";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    if (LoadQuiz != null)
+                        LoadQuiz(openFileDialog.FileName);
+                }
+            }
         }
         private void btnAddQuestion_Click(object sender, EventArgs e)
         {
