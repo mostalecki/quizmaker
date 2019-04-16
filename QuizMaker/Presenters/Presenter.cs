@@ -19,32 +19,21 @@ namespace QuizMaker
             this.view.EditQuestion += EditQuestion;
             this.view.DeleteQuestion += DeleteQuestion;
             this.view.SelectQuestion += SelectQuestion;
-            //this.view.EditQuestion += PrintQuestions;
         }
         private void AddQuestion()
         {
-            try
-            {
-                model.AddQuestion(view.Question, view.Answers, view.IsCorrect, view.Points);
-            }
-            catch(Exception e)
-            {
-                view.ShowMessage(e.Message);
-            }
-            view.ClearEntries();
-            view.Questions = model.GetQuestions;
+            model.AddQuestion(view.Question, view.Answers, view.IsCorrect, view.Points);
+            ReloadView();
         }
         private void EditQuestion(int index)
         {
             model.EditQuestion(index, view.Question, view.Answers, view.IsCorrect, view.Points);
-            view.ClearEntries();
-            view.Questions = model.GetQuestions;
+            ReloadView();
         }
         private void DeleteQuestion(int index)
         {
             model.DeleteQuestion(index);
-            view.ClearEntries();
-            view.Questions = model.GetQuestions;
+            ReloadView();
         }
         private void SelectQuestion(int index)
         {
@@ -54,10 +43,11 @@ namespace QuizMaker
             view.Answers = selectedQuestion.Item3;
             view.IsCorrect = selectedQuestion.Item4;
         }
-        //method used to debug
-        private void PrintQuestions()
+        private void ReloadView()
         {
-            //model.PrintQuestions();
+            view.ClearEntries();
+            view.Questions = model.GetQuestions;
+            view.TotalPoints = model.TotalPoints;
         }
     }
 }

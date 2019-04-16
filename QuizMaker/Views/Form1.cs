@@ -142,6 +142,7 @@ namespace QuizMaker
         public void ClearEntries()
         {
             Question = "";
+            Points = 1;
             flowLayoutAnswers.Controls.Clear();
             for (int i = 0; i < 4; i++)
             {

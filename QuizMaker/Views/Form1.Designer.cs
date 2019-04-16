@@ -160,6 +160,11 @@
             this.numericUpDownPoints.Name = "numericUpDownPoints";
             this.numericUpDownPoints.Size = new System.Drawing.Size(51, 20);
             this.numericUpDownPoints.TabIndex = 11;
+            this.numericUpDownPoints.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // label2
             // 
