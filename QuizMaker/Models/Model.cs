@@ -37,7 +37,7 @@ namespace QuizMaker
         public void EditQuestion(int index, string text, string[] answers, bool[] isCorrect, uint points)
         {
             quiz.totalPoints -= quiz.questions[index].points;
-            quiz.questions[index] = new Question(text, answers, isCorrect, points);
+            quiz.questions[index].Update(text, answers, isCorrect, points);
             quiz.totalPoints += points;
         }
         public void DeleteQuestion(int index)
@@ -51,13 +51,6 @@ namespace QuizMaker
         public Tuple<string, uint, string[], bool[]> GetSelectedQuestion(int index)
         {
             return quiz.questions[index].GetTuple();
-        }
-
-        // method used to debug
-        public void PrintQuestion(int index)
-        {
-            Console.WriteLine(index);
-            Console.WriteLine(quiz.questions[index]);
         }
     }
 }

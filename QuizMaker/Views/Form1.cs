@@ -70,7 +70,8 @@ namespace QuizMaker
             set
             {
                 AnswerControl handle;
-                for (int i = flowLayoutAnswers.Controls.Count; i < value.Length; i++)
+                flowLayoutAnswers.Controls.Clear();
+                for (int i = 0; i < value.Length; i++)
                 {
                     AnswerControl answer = new AnswerControl();
                     flowLayoutAnswers.Controls.Add(answer);

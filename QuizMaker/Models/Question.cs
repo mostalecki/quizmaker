@@ -22,6 +22,13 @@ namespace QuizMaker
             this.isCorrect = isCorrect;
             this.points = points;
         }
+        public void Update(string text, string[] answers, bool[] isCorrect, uint points)
+        {
+            this.text = text;
+            this.answers = answers;
+            this.isCorrect = isCorrect;
+            this.points = points;
+        }
         public override string ToString()
         {
             return $"{text} {points}";
