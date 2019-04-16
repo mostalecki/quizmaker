@@ -55,6 +55,9 @@ namespace QuizMaker
             try
             {
                 model.LoadQuiz(path);
+                view.QuizTitle = model.QuizTitle;
+                view.TotalPoints = model.TotalPoints;
+                view.Questions = model.GetQuestions;
             }
             catch(Exception e)
             {

@@ -80,9 +80,11 @@ namespace QuizMaker
             {
                 inputJson = inputFile.ReadToEnd();
             }
+
             try
             {
-                quiz  = (Quiz)JsonConvert.DeserializeObject(inputJson);
+                quiz = JsonConvert.DeserializeObject<Quiz>(inputJson);
+                
             }
             catch(Exception e)
             {
