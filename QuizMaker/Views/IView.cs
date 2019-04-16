@@ -19,8 +19,8 @@ namespace QuizMaker
         event Action<int> EditQuestion;
         event Action<int> DeleteQuestion;
         event Action<int> SelectQuestion;
-        event Action SaveQuiz;
-        event Action LoadQuiz;
+        event Action<string> SaveQuiz;
+        event Action<string> LoadQuiz;
         void ShowMessage(string messageText);
         void ClearEntries();
 

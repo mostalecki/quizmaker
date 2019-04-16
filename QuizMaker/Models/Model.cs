@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
+using Newtonsoft.Json;
 
 namespace QuizMaker
 {
@@ -14,6 +16,17 @@ namespace QuizMaker
             get
             {
                 return quiz.totalPoints;
+            }
+        }
+        public string QuizTitle
+        {
+            get
+            {
+                return quiz.title;
+            }
+            set
+            {
+                quiz.title = value;
             }
         }
         public Model()
@@ -51,6 +64,14 @@ namespace QuizMaker
         public Tuple<string, uint, string[], bool[]> GetSelectedQuestion(int index)
         {
             return quiz.questions[index].GetTuple();
+        }
+        public void SaveQuiz(string path)
+        {
+            string outputJson = JsonConvert.SerializeObject(quiz);
+            using (StreamWriter outputFile = new StreamWriter(Path.Combine(path)))
+            {
+                outputFile.Write(outputJson);
+            }
         }
     }
 }

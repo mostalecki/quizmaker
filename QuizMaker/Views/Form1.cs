@@ -134,8 +134,8 @@ namespace QuizMaker
         public event Action<int> EditQuestion;
         public event Action<int> DeleteQuestion;
         public event Action<int> SelectQuestion;
-        public event Action SaveQuiz;
-        public event Action LoadQuiz;
+        public event Action<string> SaveQuiz;
+        public event Action<string> LoadQuiz;
         public void ShowMessage(string messageText)
         {
             MessageBox.Show(messageText);
@@ -198,14 +198,21 @@ namespace QuizMaker
         #region EventMethods
         private void btnSaveQuiz_Click(object sender, EventArgs e)
         {
-            if (SaveQuiz != null)
-                SaveQuiz();
+            SaveFileDialog quizFile = new SaveFileDialog();
+            quizFile.DefaultExt = "json";
+            quizFile.FileName = "unnamed_quiz.json";
+            quizFile.Filter = "JSON files (*.json)|*.json|Text files (*.txt)|*.txt";
+            if (quizFile.ShowDialog() == DialogResult.OK)
+            {
+                if (SaveQuiz != null)
+                    SaveQuiz(quizFile.FileName);
+            }
         }
 
         private void btnLoadQuiz_Click(object sender, EventArgs e)
         {
             if (LoadQuiz != null)
-                LoadQuiz();
+                LoadQuiz("xd");
         }
         private void btnAddQuestion_Click(object sender, EventArgs e)
         {

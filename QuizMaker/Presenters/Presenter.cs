@@ -19,6 +19,7 @@ namespace QuizMaker
             this.view.EditQuestion += EditQuestion;
             this.view.DeleteQuestion += DeleteQuestion;
             this.view.SelectQuestion += SelectQuestion;
+            this.view.SaveQuiz += SaveQuiz;
         }
         private void AddQuestion()
         {
@@ -42,6 +43,11 @@ namespace QuizMaker
             view.Points = selectedQuestion.Item2;
             view.Answers = selectedQuestion.Item3;
             view.IsCorrect = selectedQuestion.Item4;
+        }
+        private void SaveQuiz(string path)
+        {
+            model.QuizTitle = view.QuizTitle;
+            model.SaveQuiz(path);
         }
         private void ReloadView()
         {
