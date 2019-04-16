@@ -34,7 +34,7 @@ namespace QuizMaker
         }
         private void EditQuestion(int index)
         {
-            model.EditQuestion(index);
+            model.EditQuestion(index, view.Question, view.Answers, view.IsCorrect, view.Points);
             view.Questions = model.GetQuestions;
         }
         private void DeleteQuestion(int index)

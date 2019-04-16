@@ -37,10 +37,9 @@ namespace QuizMaker
                 quiz.questions.Add(new Question(text, answers, isCorrect, points));
             }
         }
-        public void EditQuestion(int index)
+        public void EditQuestion(int index, string text, string[] answers, bool[] isCorrect, uint points)
         {
-            //TODO
-            Console.WriteLine(index);
+            quiz.questions[index] = new Question(text, answers, isCorrect, points);
         }
         public void DeleteQuestion(int index)
         {
