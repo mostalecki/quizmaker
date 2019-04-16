@@ -202,6 +202,7 @@
             this.treeView1.Name = "treeView1";
             this.treeView1.Size = new System.Drawing.Size(200, 255);
             this.treeView1.TabIndex = 15;
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.QuestionListClick);
             // 
             // groupBox2
             // 

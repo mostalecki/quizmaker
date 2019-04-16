@@ -50,6 +50,7 @@ namespace QuizMaker
                     }
                     index += 1;
                 }
+                //treeView1.Nodes.Add("+ - New question");
             }
         }
         public string[] Answers
@@ -131,6 +132,7 @@ namespace QuizMaker
         public event Action AddQuestion;
         public event Action<int> EditQuestion;
         public event Action<int> DeleteQuestion;
+        public event Action<int> SelectQuestion;
         public event Action SaveQuiz;
         public event Action LoadQuiz;
         public void ShowMessage(string messageText)
@@ -223,6 +225,25 @@ namespace QuizMaker
         {
             if (DeleteQuestion != null)
                 DeleteQuestion(SelectedNodeIndex);
+        }
+        private void QuestionListClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            if (e.Node.Parent == null)
+            {
+                foreach (TreeNode node in treeView1.Nodes)
+                {
+                    node.BackColor = Color.White;
+                    node.ForeColor = Color.Black;
+                }
+                e.Node.BackColor = SystemColors.MenuHighlight;
+                e.Node.ForeColor = Color.White;
+                if (SelectQuestion != null)
+                    SelectQuestion(e.Node.Index);
+            }
+            else
+            {
+
+            }
         }
         #endregion
     }

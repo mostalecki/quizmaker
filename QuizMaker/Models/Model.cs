@@ -34,13 +34,16 @@ namespace QuizMaker
         {
             if(index!=-1) quiz.questions.RemoveAt(index);
         }
-        // method used to debug
-        public void PrintQuestions()
+        public Tuple<string, uint, string[], bool[]> GetSelectedQuestion(int index)
         {
-            foreach(Question q in quiz.questions)
-            {
-                Console.WriteLine(q);
-            }
+            return quiz.questions[index].GetTuple();
+        }
+
+        // method used to debug
+        public void PrintQuestion(int index)
+        {
+            Console.WriteLine(index);
+            Console.WriteLine(quiz.questions[index]);
         }
     }
 }
