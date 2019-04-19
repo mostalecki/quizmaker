@@ -24,12 +24,12 @@ namespace QuizMaker
         }
         private void AddQuestion()
         {
-            model.AddQuestion(view.Question, view.Answers, view.IsCorrect, view.Points);
+            model.AddQuestion(view.Question, view.Answers, view.Points);
             ReloadView();
         }
         private void EditQuestion(int index)
         {
-            model.EditQuestion(index, view.Question, view.Answers, view.IsCorrect, view.Points);
+            model.EditQuestion(index, view.Question, view.Answers, view.Points);
             ReloadView();
         }
         private void DeleteQuestion(int index)
@@ -39,11 +39,10 @@ namespace QuizMaker
         }
         private void SelectQuestion(int index)
         {
-            Tuple<string, uint, string[], bool[]> selectedQuestion = model.GetSelectedQuestion(index);
+            Tuple<string, uint, List<Tuple<string, bool>> > selectedQuestion = model.GetSelectedQuestion(index);
             view.Question = selectedQuestion.Item1;
             view.Points = selectedQuestion.Item2;
             view.Answers = selectedQuestion.Item3;
-            view.IsCorrect = selectedQuestion.Item4;
         }
         private void SaveQuiz(string path)
         {

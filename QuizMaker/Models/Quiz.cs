@@ -9,14 +9,14 @@ namespace QuizMaker
     class Quiz
     {
         public string title;
-        public List<Question> questions;
         public uint totalPoints;
+        public List<Question> questions;
 
         public Quiz()
         {
             questions = new List<Question>();
         }
-        public List<Tuple<string, uint, string[], bool[]>> GetQuestionTuples()
+        public List<Tuple<string, uint, List<Tuple<string, bool>> >> GetQuestionTuples()
         {
             return (from n in Enumerable.Range(0, questions.Count) select questions[n].GetTuple()).ToList();
         }

@@ -35,22 +35,22 @@ namespace QuizMaker
         }
 
 
-        public List<Tuple<string, uint, string[], bool[]>> GetQuestions
+        public List<Tuple<string, uint, List<Tuple<string, bool>> >> GetQuestions
         {
             get
             {
                 return quiz.GetQuestionTuples();
             }
         }
-        public void AddQuestion(string text, string[] answers, bool[] isCorrect, uint points)
+        public void AddQuestion(string text, List<Tuple<string, bool>> answers, uint points)
         {
-            quiz.questions.Add(new Question(text, answers, isCorrect, points));
+            quiz.questions.Add(new Question(text, answers, points));
             quiz.totalPoints += points;
         }
-        public void EditQuestion(int index, string text, string[] answers, bool[] isCorrect, uint points)
+        public void EditQuestion(int index, string text, List<Tuple<string, bool>> answers, uint points)
         {
             quiz.totalPoints -= quiz.questions[index].points;
-            quiz.questions[index].Update(text, answers, isCorrect, points);
+            quiz.questions[index].Update(text, answers, points);
             quiz.totalPoints += points;
         }
         public void DeleteQuestion(int index)
@@ -61,7 +61,7 @@ namespace QuizMaker
                 quiz.questions.RemoveAt(index);
             }
         }
-        public Tuple<string, uint, string[], bool[]> GetSelectedQuestion(int index)
+        public Tuple<string, uint, List<Tuple<string, bool>> > GetSelectedQuestion(int index)
         {
             return quiz.questions[index].GetTuple();
         }

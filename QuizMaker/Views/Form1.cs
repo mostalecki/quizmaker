@@ -35,7 +35,7 @@ namespace QuizMaker
                 textBoxQuestion.Text = value;
             }
         }
-        public List<Tuple<string, uint, string[], bool[]>> Questions
+        public List<Tuple<string, uint, List<Tuple<string, bool>> >> Questions
         {
             set
             {
@@ -44,42 +44,43 @@ namespace QuizMaker
                 foreach(var questionTuple in value)
                 {
                     treeView1.Nodes.Add($"{index+1}. {questionTuple.Item1} - {questionTuple.Item2}pts");
-                    for(int i = 0; i < questionTuple.Item3.Length; i++)
+                    for(int i = 0; i < questionTuple.Item3.Count; i++)
                     {
-                        treeView1.Nodes[index].Nodes.Add($"{questionTuple.Item3[i]} - {questionTuple.Item4[i]}");
+                        treeView1.Nodes[index].Nodes.Add($"{questionTuple.Item3[i].Item1} - {questionTuple.Item3[i].Item2}");
                     }
                     index += 1;
                 }
                 treeView1.Nodes.Add("+ New question");
             }
         }
-        public string[] Answers
+        public List<Tuple<string, bool>> Answers
         {
             get
             {
-                List<string> answers = new List<string>();
+                List<Tuple<string, bool>> answers = new List<Tuple<string, bool>>();
                 foreach (AnswerControl c in flowLayoutAnswers.Controls)
                 {
                     if (c.Text != "")
                     {
-                        answers.Add(c.Text);
+                        answers.Add(new Tuple<string, bool>(c.Text, c.IsCorrect));
                     }
                 }
-                return answers.ToArray();
+                return answers;
             }
             set
             {
                 AnswerControl handle;
                 flowLayoutAnswers.Controls.Clear();
-                for (int i = 0; i < value.Length; i++)
+                for (int i = 0; i < value.Count; i++)
                 {
                     AnswerControl answer = new AnswerControl();
                     flowLayoutAnswers.Controls.Add(answer);
                 }
-                for(int i = 0; i < value.Length; i++)
+                for(int i = 0; i < value.Count; i++)
                 {
                     handle = (AnswerControl)flowLayoutAnswers.Controls[i];
-                    handle.Text = value[i];
+                    handle.Text = value[i].Item1;
+                    handle.IsCorrect = value[i].Item2;
                 }
             }
         }
@@ -187,7 +188,7 @@ namespace QuizMaker
                 MessageBox.Show("Question text cannot be blank.");
                 return false;
             }
-            else if(Answers.Length < 2)
+            else if(Answers.Count < 2)
             {
                 MessageBox.Show("Add at least 2 answers.");
                 return false;
