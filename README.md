@@ -1,5 +1,5 @@
 # quizmaker
-Quizmaker is a part of a IV semester group side-project, that allows you to create multiple choice text-quizzes and save them as json files, or load existing quizzes and edit them. \It's designed to be used with [this client](https://github.com/dawpolak/quiz-client) which is the second part of this project.\
+Quizmaker is a part of a IV semester group side-project. It allows you to create multiple choice text-quizzes and save them as json files, or load existing quizzes and edit them. It's designed to be used with [this client](https://github.com/dawpolak/quiz-client) which is the second part of this project.\
 It was built using Windows Forms, according to MVP design pattern.\
 <br>
 This is a sample json data containing a quiz with 2 questions, 4 answers each:
