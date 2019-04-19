@@ -5,19 +5,54 @@ It was built according to MVP design pattern using Windows Forms.\
 This is a sample json data containing a quiz with 2 questions, 4 answers each:
 ```json
 {
-    "title": "Sample quiz",
-    "questions": [{
-        "text": "What's the capital of Thailand?",
-        "answers": ["Hanoi", "Bangkok", "Phnom Penh", "Singapore"],
-        "isCorrect": [false, true, false, false],
-        "points": 5
-    }, {
-        "text": "Which of the following astronauts have walked the moon?",
-        "answers": ["Buzz Aldrin", "Chris Hadfield", "Yuri Gagarin", "Neil Armstrong"],
-        "isCorrect": [true, false, false, true],
-        "points": 1
-    }],
-    "totalPoints": 6
+  "title": "Sample quiz",
+  "totalPoints": 8,
+  "questions": [
+    {
+      "text": "What's the capital of Thailand?",
+      "answers": [
+        {
+          "text": "Hanoi",
+          "isCorrect": false
+        },
+        {
+          "text": "Bangkok",
+          "isCorrect": true
+        },
+        {
+          "text": "Pattaya",
+          "isCorrect": false
+        },
+        {
+          "text": "Phnom Penh",
+          "isCorrect": false
+        }
+      ],
+      "points": 5
+    },
+    {
+      "text": "Which of the following astronauts have walked the Moon?",
+      "answers": [
+        {
+          "text": "Buzz Aldrin",
+          "isCorrect": true
+        },
+        {
+          "text": "Chris Hadfield",
+          "isCorrect": false
+        },
+        {
+          "text": "Michael Collins",
+          "isCorrect": false
+        },
+        {
+          "text": "Neil Armstrong",
+          "isCorrect": true
+        }
+      ],
+      "points": 3
+    }
+  ]
 }
 ```
 
