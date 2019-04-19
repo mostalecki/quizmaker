@@ -180,7 +180,7 @@ namespace QuizMaker
             AnswerControl answer = new AnswerControl();
             flowLayoutAnswers.Controls.Add(answer);
         }
-        private bool validateQuestion()
+        private bool validateQuestionFields()
         {
             if(Question == "")
             {
@@ -226,7 +226,7 @@ namespace QuizMaker
         }
         private void btnAddQuestion_Click(object sender, EventArgs e)
         {
-            if (validateQuestion())
+            if (validateQuestionFields())
             {
                 if (AddQuestion != null)
                     AddQuestion();
@@ -238,7 +238,7 @@ namespace QuizMaker
             {
                 return;
             }
-            if (validateQuestion())
+            if (validateQuestionFields())
             {
                 if (EditQuestion != null)
                     EditQuestion(SelectedNodeIndex);
@@ -276,7 +276,7 @@ namespace QuizMaker
             }
             else
             {
-                //todo: if sender is a chld node, unselect
+                //todo: if sender is a chld node, unselect or make child nodes entirely unselectable to keep questions treeView clear
             }
         }
         #endregion

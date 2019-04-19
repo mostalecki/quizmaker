@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Answer.cs" />
     <Compile Include="Models\Model.cs" />
     <Compile Include="Presenters\Presenter.cs" />
     <Compile Include="Views\Form1.cs">

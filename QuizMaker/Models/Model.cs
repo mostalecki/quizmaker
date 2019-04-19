@@ -86,7 +86,7 @@ namespace QuizMaker
                 quiz = JsonConvert.DeserializeObject<Quiz>(inputJson);
                 
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw new Exception("Failed to open file");
             }
