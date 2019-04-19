@@ -55,11 +55,8 @@ namespace QuizMaker
         }
         public void DeleteQuestion(int index)
         {
-            if (index != -1)
-            {
-                quiz.totalPoints -= quiz.questions[index].points;
-                quiz.questions.RemoveAt(index);
-            }
+            quiz.totalPoints -= quiz.questions[index].points;
+            quiz.questions.RemoveAt(index);
         }
         public Tuple<string, uint, List<Tuple<string, bool>> > GetSelectedQuestion(int index)
         {

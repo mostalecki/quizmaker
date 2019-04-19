@@ -35,16 +35,16 @@ namespace QuizMaker
                 textBoxQuestion.Text = value;
             }
         }
-        public List<Tuple<string, uint, List<Tuple<string, bool>> >> Questions
+        public List<Tuple<string, uint, List<Tuple<string, bool>>>> Questions
         {
             set
             {
                 int index = 0;
                 treeView1.Nodes.Clear();
-                foreach(var questionTuple in value)
+                foreach (var questionTuple in value)
                 {
-                    treeView1.Nodes.Add($"{index+1}. {questionTuple.Item1} - {questionTuple.Item2}pts");
-                    for(int i = 0; i < questionTuple.Item3.Count; i++)
+                    treeView1.Nodes.Add($"{index + 1}. {questionTuple.Item1} - {questionTuple.Item2}pts");
+                    for (int i = 0; i < questionTuple.Item3.Count; i++)
                     {
                         treeView1.Nodes[index].Nodes.Add($"{questionTuple.Item3[i].Item1} - {questionTuple.Item3[i].Item2}");
                     }
@@ -76,7 +76,7 @@ namespace QuizMaker
                     AnswerControl answer = new AnswerControl();
                     flowLayoutAnswers.Controls.Add(answer);
                 }
-                for(int i = 0; i < value.Count; i++)
+                for (int i = 0; i < value.Count; i++)
                 {
                     handle = (AnswerControl)flowLayoutAnswers.Controls[i];
                     handle.Text = value[i].Item1;
@@ -101,7 +101,7 @@ namespace QuizMaker
             set
             {
                 AnswerControl handle;
-                for(int i = flowLayoutAnswers.Controls.Count ; i < value.Length; i++)
+                for (int i = flowLayoutAnswers.Controls.Count; i < value.Length; i++)
                 {
                     AnswerControl answer = new AnswerControl();
                     flowLayoutAnswers.Controls.Add(answer);
@@ -183,12 +183,12 @@ namespace QuizMaker
         }
         private bool validateQuestionFields()
         {
-            if(Question == "")
+            if (Question == "")
             {
                 MessageBox.Show("Question text cannot be blank.");
                 return false;
             }
-            else if(Answers.Count < 2)
+            else if (Answers.Count < 2)
             {
                 MessageBox.Show("Add at least 2 answers.");
                 return false;
@@ -235,7 +235,7 @@ namespace QuizMaker
         }
         private void btnEditQuestion_Click(object sender, EventArgs e)
         {
-            if (SelectedNodeIndex + 1 == treeView1.Nodes.Count)
+            if (SelectedNodeIndex + 1 == treeView1.Nodes.Count || SelectedNodeIndex == -1)
             {
                 return;
             }
@@ -247,7 +247,7 @@ namespace QuizMaker
         }
         private void btnDeleteQuestion_Click(object sender, EventArgs e)
         {
-            if (SelectedNodeIndex + 1 == treeView1.Nodes.Count)
+            if (SelectedNodeIndex + 1 == treeView1.Nodes.Count || SelectedNodeIndex == -1)
             {
                 return;
             }
