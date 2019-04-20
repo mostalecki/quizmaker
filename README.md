@@ -55,5 +55,3 @@ This is a sample json data containing a quiz with 2 questions, 4 answers each:
   ]
 }
 ```
-
-Quizmaker uses [Json.NET](https://www.newtonsoft.com/json) to perform serialization and deserialization.
