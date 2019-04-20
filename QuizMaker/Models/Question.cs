@@ -12,6 +12,7 @@ namespace QuizMaker
         public Answer[] answers;
         public uint points;
 
+        public Question() { }
         public Question(string text, List<Tuple<string, bool>> answers, uint points)
         {
             this.answers = new Answer[answers.Count];

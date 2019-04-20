@@ -10,6 +10,7 @@ namespace QuizMaker
     {
         public string text;
         public bool isCorrect;
+        public Answer() { }
         public Answer(string text, bool isCorrect)
         {
             this.text = text;

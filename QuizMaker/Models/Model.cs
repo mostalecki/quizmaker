@@ -4,7 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
-using Newtonsoft.Json;
+using System.Web.Script.Serialization;
+
 
 namespace QuizMaker
 {
@@ -64,10 +65,10 @@ namespace QuizMaker
         }
         public void SaveQuiz(string path)
         {
-            string outputJson = JsonConvert.SerializeObject(quiz);
+            string json = new JavaScriptSerializer().Serialize(quiz);
             using (StreamWriter outputFile = new StreamWriter(Path.Combine(path)))
             {
-                outputFile.Write(outputJson);
+                outputFile.Write(json);
             }
         }
         public void LoadQuiz(string path)
@@ -80,10 +81,10 @@ namespace QuizMaker
 
             try
             {
-                quiz = JsonConvert.DeserializeObject<Quiz>(inputJson);
+                quiz = new JavaScriptSerializer().Deserialize<Quiz>(inputJson);
                 
             }
-            catch(Exception)
+            catch(Exception e)
             {
                 throw new Exception("Failed to open file");
             }
