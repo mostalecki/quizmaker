@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.Net.Http;
 
 
 namespace QuizMaker
@@ -87,6 +88,38 @@ namespace QuizMaker
             catch(Exception e)
             {
                 throw new Exception("Failed to open file");
+            }
+        }
+
+        public async Task PostQuiz()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                string url = "https://stardustscarab.pythonanywhere.com/quizzes/create";
+                try
+                {
+
+                    string json = new JavaScriptSerializer().Serialize(quiz);
+                    var content = new StringContent(json, Encoding.UTF8, "application/json");
+                    var result = await client.PostAsync(url, content);
+
+                    if (result.IsSuccessStatusCode)
+                    {
+                        Console.WriteLine(result.StatusCode.ToString());
+                    }
+                    else
+                    {
+                        // problems handling here
+                        Console.WriteLine(
+                            "Error occurred, the status code is: {0}",
+                            result.StatusCode
+                        );
+                    }
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
             }
         }
     }

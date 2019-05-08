@@ -21,6 +21,7 @@ namespace QuizMaker
             this.view.SelectQuestion += SelectQuestion;
             this.view.SaveQuiz += SaveQuiz;
             this.view.LoadQuiz += LoadQuiz;
+            this.view.PostQuiz += PostQuiz;
         }
         private void AddQuestion()
         {
@@ -48,6 +49,11 @@ namespace QuizMaker
         {
             model.QuizTitle = view.QuizTitle;
             model.SaveQuiz(path);
+        }
+        private void PostQuiz()
+        {
+            model.QuizTitle = view.QuizTitle;
+            model.PostQuiz();
         }
         private void LoadQuiz(string path)
         {

@@ -137,6 +137,7 @@ namespace QuizMaker
         public event Action<int> SelectQuestion;
         public event Action<string> SaveQuiz;
         public event Action<string> LoadQuiz;
+        public event Action PostQuiz;
         public void ShowMessage(string messageText)
         {
             MessageBox.Show(messageText);
@@ -210,6 +211,11 @@ namespace QuizMaker
                         SaveQuiz(saveFileDialog.FileName);
                 }
             }
+        }
+        private void btnPostQuiz_Click(object sender, EventArgs e)
+        {
+                    if (PostQuiz != null)
+                        PostQuiz();
         }
 
         private void btnLoadQuiz_Click(object sender, EventArgs e)
