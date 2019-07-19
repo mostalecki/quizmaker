@@ -10,8 +10,8 @@ namespace QuizMaker
     {
         string QuizTitle { get; set; }
         string Question { get; set; }
-        List<Tuple<string, uint, List<Tuple<string, bool>> >> Questions { set; }
-        List<Tuple<string, bool>> Answers { get; set; }
+        List<Question> Questions { set; }
+        List<Answer> Answers { get; set; }
         bool[] IsCorrect { get; set; }
         uint Points { get; set; }
         uint TotalPoints { set; }
@@ -24,7 +24,6 @@ namespace QuizMaker
         event Action PostQuiz;
         void ShowMessage(string messageText);
         void ClearEntries();
-
 
     }
 }

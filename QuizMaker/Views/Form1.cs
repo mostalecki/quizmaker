@@ -35,34 +35,34 @@ namespace QuizMaker
                 textBoxQuestion.Text = value;
             }
         }
-        public List<Tuple<string, uint, List<Tuple<string, bool>>>> Questions
+        public List<Question> Questions
         {
             set
             {
                 int index = 0;
                 treeView1.Nodes.Clear();
-                foreach (var questionTuple in value)
+                foreach (var question in value)
                 {
-                    treeView1.Nodes.Add($"{index + 1}. {questionTuple.Item1} - {questionTuple.Item2}pts");
-                    for (int i = 0; i < questionTuple.Item3.Count; i++)
+                    treeView1.Nodes.Add($"{index + 1}. {question.text} - {question.points}pts");
+                    for (int i = 0; i < question.answers.Length; i++)
                     {
-                        treeView1.Nodes[index].Nodes.Add($"{questionTuple.Item3[i].Item1} - {questionTuple.Item3[i].Item2}");
+                        treeView1.Nodes[index].Nodes.Add($"{question.answers[i].text} - {question.answers[i].isCorrect}");
                     }
                     index += 1;
                 }
                 treeView1.Nodes.Add("+ New question");
             }
         }
-        public List<Tuple<string, bool>> Answers
+        public List<Answer> Answers
         {
             get
             {
-                List<Tuple<string, bool>> answers = new List<Tuple<string, bool>>();
+                List<Answer> answers = new List<Answer>();
                 foreach (AnswerControl c in flowLayoutAnswers.Controls)
                 {
                     if (c.Text != "")
                     {
-                        answers.Add(new Tuple<string, bool>(c.Text, c.IsCorrect));
+                        answers.Add(new Answer(c.Text, c.IsCorrect));
                     }
                 }
                 return answers;
@@ -79,8 +79,8 @@ namespace QuizMaker
                 for (int i = 0; i < value.Count; i++)
                 {
                     handle = (AnswerControl)flowLayoutAnswers.Controls[i];
-                    handle.Text = value[i].Item1;
-                    handle.IsCorrect = value[i].Item2;
+                    handle.Text = value[i].text;
+                    handle.IsCorrect = value[i].isCorrect;
                 }
             }
         }

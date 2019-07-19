@@ -40,10 +40,10 @@ namespace QuizMaker
         }
         private void SelectQuestion(int index)
         {
-            Tuple<string, uint, List<Tuple<string, bool>> > selectedQuestion = model.GetSelectedQuestion(index);
-            view.Question = selectedQuestion.Item1;
-            view.Points = selectedQuestion.Item2;
-            view.Answers = selectedQuestion.Item3;
+            Question selectedQuestion = model.GetSelectedQuestion(index);
+            view.Question = selectedQuestion.text;
+            view.Points = selectedQuestion.points;
+            view.Answers = selectedQuestion.answers.ToList();
         }
         private void SaveQuiz(string path)
         {

@@ -36,20 +36,19 @@ namespace QuizMaker
             quiz = new Quiz();
         }
 
-
-        public List<Tuple<string, uint, List<Tuple<string, bool>> >> GetQuestions
+        public List<Question> GetQuestions
         {
             get
             {
-                return quiz.GetQuestionTuples();
+                return quiz.questions;
             }
         }
-        public void AddQuestion(string text, List<Tuple<string, bool>> answers, uint points)
+        public void AddQuestion(string text, List<Answer> answers, uint points)
         {
             quiz.questions.Add(new Question(text, answers, points));
             quiz.totalPoints += points;
         }
-        public void EditQuestion(int index, string text, List<Tuple<string, bool>> answers, uint points)
+        public void EditQuestion(int index, string text, List<Answer> answers, uint points)
         {
             quiz.totalPoints -= quiz.questions[index].points;
             quiz.questions[index].Update(text, answers, points);
@@ -60,9 +59,9 @@ namespace QuizMaker
             quiz.totalPoints -= quiz.questions[index].points;
             quiz.questions.RemoveAt(index);
         }
-        public Tuple<string, uint, List<Tuple<string, bool>> > GetSelectedQuestion(int index)
+        public Question GetSelectedQuestion(int index)
         {
-            return quiz.questions[index].GetTuple();
+            return quiz.questions[index];
         }
         public void SaveQuiz(string path)
         {
@@ -85,7 +84,7 @@ namespace QuizMaker
                 quiz = new JavaScriptSerializer().Deserialize<Quiz>(inputJson);
                 
             }
-            catch(Exception e)
+            catch(Exception)
             {
                 throw new Exception("Failed to open file");
             }
