@@ -54,6 +54,7 @@ namespace QuizMaker
         {
             model.QuizTitle = view.QuizTitle;
             model.PostQuiz();
+            
         }
         private void LoadQuiz(string path)
         {
