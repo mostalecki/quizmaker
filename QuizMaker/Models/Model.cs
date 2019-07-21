@@ -95,7 +95,7 @@ namespace QuizMaker
             Console.WriteLine("elo");
             using (HttpClient client = new HttpClient())
             {
-                string url = "https://stardustscarab.pythonanywhere.com/quizzes/create/";
+                string url = "insert url here";
                 try
                 {
 
