@@ -90,12 +90,12 @@ namespace QuizMaker
             }
         }
 
-        public async Task PostQuiz()
+        public async Task<bool> PostQuiz()
         {
             Console.WriteLine("elo");
             using (HttpClient client = new HttpClient())
             {
-                string url = "insert url here";
+                string url = "https://stardustscarab.pythonanywhere.com/quizzes/create/";
                 try
                 {
 
@@ -106,6 +106,7 @@ namespace QuizMaker
                     if (result.IsSuccessStatusCode)
                     {
                         Console.WriteLine(result.StatusCode.ToString());
+                        return true;
                     }
                     else
                     {
@@ -114,11 +115,13 @@ namespace QuizMaker
                             "Error occurred, the status code is: {0}",
                             result.StatusCode
                         );
+                        return false;
                     }
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
+                    return false;
                 }
             }
         }

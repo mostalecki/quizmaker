@@ -50,10 +50,18 @@ namespace QuizMaker
             model.QuizTitle = view.QuizTitle;
             model.SaveQuiz(path);
         }
-        private void PostQuiz()
+        private async void PostQuiz()
         {
             model.QuizTitle = view.QuizTitle;
-            model.PostQuiz();
+            var result = await model.PostQuiz();
+            if (result)
+            {
+                view.ShowMessage("Quiz uploaded succesfully");
+            }
+            else
+            {
+                view.ShowMessage("Quiz upload failed");
+            }
             
         }
         private void LoadQuiz(string path)
